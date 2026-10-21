@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tanushka 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050510;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.scene {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.scene.active {
+    display: flex;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+button {
+    border: none;
+    padding: 14px 26px;
+    margin-top: 25px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff2479, #8a2bff);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff247977;
+    transition: .3s;
+}
+
+button:active {
+    transform: scale(.94);
+}
+
+.small {
+    font-size: 13px;
+    color: #bcb8db;
+    margin-top: 15px;
+}
+
+.glow {
+    color: #fff;
+    text-shadow: 0 0 10px #ff44bb, 0 0 30px #9d4dff;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(#a76aff 1px, transparent 1px);
+    background-size: 65px 65px, 95px 95px;
+    animation: starsMove 15s linear infinite;
+}
+
+@keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+/* SCENE 1 */
+.intro-title {
+    font-size: clamp(25px, 7vw, 45px);
+    letter-spacing: 5px;
+    animation: zoomIn 2s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(.3); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* SCENE 2 */
+.name {
+    font-size: clamp(35px, 10vw, 70px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    background: linear-gradient(90deg, #ff65c5, #ffffff, #a365ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: nameReveal 2s ease infinite alternate;
+}
+
+@keyframes nameReveal {
+    from { filter: drop-shadow(0 0 5px #ff40ad); }
+    to { filter: drop-shadow(0 0 25px #9b40ff); }
+}
+
+/* SCENE 3 */
+.characters {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: end;
+    margin-bottom: 25px;
+}
+
+.person {
+    font-size: clamp(65px, 18vw, 110px);
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.person:nth-child(2) {
+    animation-delay: .5s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.speech {
+    min-height: 65px;
+    max-width: 350px;
+    padding: 18px;
+    border: 1px solid #ffffff33;
+    border-radius: 20px;
+    background: #ffffff10;
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+/* SCENE 4 */
+.web {
+    font-size: 100px;
+    animation: swing 1.5s ease-in-out infinite alternate;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+    from { transform: rotate(-15deg); }
+    to { transform: rotate(15deg); }
+}
+
+.gift {
+    font-size: 100px;
+    cursor: pointer;
+    animation: giftBeat 1s infinite alternate;
+    filter: drop-shadow(0 0 20px #ff4ab6);
+}
+
+@keyframes giftBeat {
+    from { transform: scale(.9) rotate(-4deg); }
+    to { transform: scale(1.12) rotate(4deg); }
+}
+
+.hint {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: .35; }
+}
+
+/* SCENE 5 */
+.bigwish {
+    font-size: clamp(32px, 9vw, 65px);
+    font-weight: 900;
+    color: #ffb7ed;
+    text-shadow: 0 0 20px #ff20b7, 0 0 50px #8d2dff;
+    animation: zoomIn 1s ease;
+}
+
+.cake {
+    font-size: 90px;
+    animation: bounce 1s infinite;
+}
+
+#confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -30px;
+    font-size: 22px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+.linkbox {
+    display: none;
+    margin-top: 20px;
+}
+
+.linkbox a {
+    color: white;
+    text-decoration: none;
+    background: #7a35ff;
+    padding: 13px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 0 20px #8c36ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div id="confetti"></div>
+
+<!-- SCENE 1 -->
+<section class="scene active" id="s1">
+    <p style="color:#e8b5ff; letter-spacing:4px;">
+        ✦ A SPECIAL MOMENT ✦
+    </p>
+    <br>
+    <h1 class="intro-title glow">SOMEONE IS SPECIAL...</h1>
+    <p class="small">A little surprise is waiting for you.</p>
+    <button onclick="go(2)">UNLOCK THE MAGIC ✨</button>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene" id="s2">
+    <p>THIS LITTLE UNIVERSE IS FOR</p>
+    <br>
+    <h1 class="name">TANUSHKA</h1>
+    <p style="margin-top:20px; color:#ffb5e7;">
+        The main character of today's story 💖
+    </p>
+    <button onclick="go(3)">CONTINUE THE STORY →</button>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene" id="s3">
+    <p class="small">SOMEWHERE IN A LITTLE ANIMATED WORLD...</p>
+
+    <div class="characters">
+        <div>
+            <div class="person">👦🏻</div>
+            <p>Boy</p>
+        </div>
+        <div>
+            <div class="person">👧🏻</div>
+            <p>Girl</p>
+        </div>
+    </div>
+
+    <div class="speech" id="dialogue">
+        Psst... hey! 🤫
+    </div>
+
+    <button id="talkBtn" onclick="nextLine()">WHAT HAPPENS NEXT? 👀</button>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene" id="s4">
+    <p class="small">WAIT... DID YOU SEE THAT? 👀</p>
+
+    <div class="web">🕸️</div>
+
+    <h2 class="glow">A FRIENDLY NEIGHBOR HAS A SURPRISE!</h2>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <p class="hint">TAP THE GIFT TO OPEN IT! 💝</p>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene" id="s5">
+    <div class="cake">🎂</div>
+
+    <h1 class="bigwish">HAPPY BIRTHDAY!</h1>
+    <h2 class="name" style="font-size:clamp(30px,8vw,55px);">
+        TANUSHKA 💖
+    </h2>
+
+    <p style="margin-top:20px; line-height:1.8;">
+        May your world be filled with laughter,<br>
+        magical moments and endless happiness! ✨
+    </p>
+
+    <p style="margin-top:15px;">🎉 🥳 🎈 💗 🎉</p>
+
+    <div class="linkbox" id="linkbox">
+        <a id="surpriseLink" href="#" target="_blank"
+           rel="noopener noreferrer">
+            OPEN YOUR SPECIAL SURPRISE 💌
+        </a>
+    </div>
+
+    <button onclick="replay()">WATCH AGAIN ↻</button>
+</section>
+
+<script>
+let currentLine = 0;
+
+const dialogues = [
+    "Psst... hey! 🤫",
+    "I have a little secret... 👀",
+    "It's Tanushka's special day! 🎂",
+    "So, can you keep a secret? 🤭",
+    "HAPPY BIRTHDAY, TANUSHKA! 🎉💖"
+];
+
+function go(number) {
+    document.querySelectorAll(".scene").forEach(scene => {
+        scene.classList.remove("active");
+    });
+
+    document.getElementById("s" + number).classList.add("active");
+
+    if (number === 4) {
+        setTimeout(() => {
+            document.querySelector("#s4 .hint").style.opacity = "1";
+        }, 500);
+    }
+}
+
+function nextLine() {
+    currentLine++;
+
+    if (currentLine < dialogues.length) {
+        document.getElementById("dialogue").textContent =
+            dialogues[currentLine];
+    } else {
+        go(4);
+        currentLine = 0;
+    }
+}
+
+function openGift() {
+    go(5);
+    launchConfetti();
+}
+
+function launchConfetti() {
+    const area = document.getElementById("confetti");
+    area.innerHTML = "";
+
+    const symbols = ["💖", "✨", "🎉", "💗", "🎊", "⭐"];
+
+    for (let i = 0; i < 65; i++) {
+        const piece = document.createElement("span");
+        piece.className = "confetti-piece";
+        piece.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        piece.style.left = Math.random() * 100 + "%";
+        piece.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
+        piece.style.animationDelay = Math.random() * 2 + "s";
+
+        area.appendChild(piece);
+    }
+}
+
+function replay() {
+    currentLine = 0;
+    document.getElementById("dialogue").textContent = dialogues[0];
+    document.getElementById("confetti").innerHTML = "";
+    go(1);
+}
+
+/* ADD YOUR OWN SURPRISE LINK HERE */
+const MY_SURPRISE_LINK = "";
+
+if (MY_SURPRISE_LINK.trim() !== "") {
+    document.getElementById("surpriseLink").href = MY_SURPRISE_LINK;
+    document.getElementById("linkbox").style.display = "block";
+}
+</script>
+
+</body>
+  </html>
